@@ -1,4 +1,39 @@
+
+/* Remove selected item highlighting */
 sl-tree-item::part(item--selected) {
   background-color: transparent;
   border: none;
+}
+
+/* Make hyperlinks look like normal text */
+sl-tree-item a {
+  color: inherit !important;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  cursor: pointer;
+}
+
+/* Reveal underline only when hovering over the link */
+sl-tree-item a:hover,
+sl-tree-item a:focus-visible {
+  color: inherit !important;
+  text-decoration: underline;
+  text-decoration-color: #4A90E2; /* Underline colour */
+  text-decoration-thickness: 2.5px;  /* Underline thickness */
+  text-underline-offset: 3px;
+}
+
+/* Remove visited hyperlink styling */
+sl-tree-item a:visited {
+  color: inherit !important;
+}
+
+/* Smooth scrolling to the linked section */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent headings from being hidden behind sticky headers */
+[id] {
+  scroll-margin-top: 80px;
 }

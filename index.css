@@ -4,10 +4,20 @@ body {
   padding: 0;
   font-size: 18px;
   font-family: var(--sl-font-sans);
+
+  background: linear-gradient(
+    100deg,
+    #FFFFFF 0%,
+    #F7F9FC 60%,
+    #EEF3FA 100%
+  );
+
+  min-height: 100%;
+  color: #263238;
 }
 
 .content {
-  max-width: 800px;
+  max-width: 1100px;
   margin: auto;
   padding: 10%;
 }
