@@ -18,7 +18,7 @@ sl-tree-item a:hover,
 sl-tree-item a:focus-visible {
   color: inherit !important;
   text-decoration: underline;
-  text-decoration-color: #4A90E2; /* Underline colour */
+  text-decoration-color: #156082; /* Underline colour #4A90E2*/
   text-decoration-thickness: 2.5px;  /* Underline thickness */
   text-underline-offset: 3px;
 }

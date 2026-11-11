@@ -188,9 +188,10 @@
           tray. However, the system still requires manual intervention during the restocking 
           phase, making the process time-consuming and susceptible to human error.
         </p>
+      </div>
 
       <div>
-        <h3>1.2.1 Restocking Phase</h3>
+        <h4><u>1.2.1 Restocking Phase</u></h4>
         <p>
           The medication restocking phase consists of three main steps 
           (Figure 1). In the first step, the staff prepare the medication 
@@ -229,7 +230,7 @@
       </div>
 
       <div>
-        <h3>1.2.2 Error Analysis</h3>
+        <h4><u>1.2.2 Error Analysis</u></h4>
         <p>
           We investigated the relationship between staff experience and DDS-2 error rates using 
           the raw error data provided by the pharmacists. We analysed the error rates of all staff 
@@ -243,8 +244,32 @@
         <image-component
         tag="image"
         source="assets/graph - doe.png"
-        subtitle="Figure 1: There is a weak, non-significant negative correlation (n = 60, ρ = −0.22, p = 0.09) between days of experience and error rate">
+        subtitle="Figure 2: There is a weak, non-significant negative correlation (n = 60, ρ = −0.22, p = 0.09) between days of experience and error rate">
         </image-component>
+
+        <p>
+          To identify areas requiring the greatest attention, we then analysed the frequency of different 
+          restocking errors. As shown in Figure 3, certain errors occurred more frequently than others, 
+          allowing us to prioritise the problems that our proposed solution should address rather than 
+          attempting to automate every aspect of the process. We identified three important error categories: 
+          incorrect quantities and incorrect batch numbers and expiry date. Incorrect quantities may arise 
+          during the manual counting of medication blisters, while incorrect batch numbers and expiry date 
+          may result from manual data entry or verification. These findings directly inform the development 
+          of our prototype, something that can be made error-proof from all human errors. 
+        </p>
+
+        <image-component
+        tag="image"
+        source="assets/graph - errors.png"
+        subtitle="Figure 3: The graph shows that wrong quantity (46.82%), keying in of batch number (26.51%) and expiry date (13.65%) are the main causes of errors">
+        </image-component>
+
+        <p>
+          The consequences of these errors extend beyond the additional time spent when the restocking process 
+          is repeated. Medication errors like these can have serious consequences when they reach patients, 
+          potentially resulting in additional hospitalisation costs, estimated here at approximately S$3,650 per 
+          error (Ng et al., 2020). Therefore, improving medication verification is not only about increasing operational efficiency but also about reducing risks to patients and healthcare institutions.
+        </p>
       </div>
 
     </div>
@@ -255,52 +280,205 @@
     <sl-divider></sl-divider>
     <div>
       <div id="section-header-2">
-        <h2>2. Section Header 2</h2>
-        <p>
-          Ornare arcu dui vivamus arcu felis bibendum ut tristique et. Mi proin sed libero enim sed faucibus turpis in
-          eu. Odio ut sem nulla pharetra diam sit. Nibh cras pulvinar mattis nunc sed blandit libero. Lacus sed viverra
-          tellus in hac habitasse platea dictumst vestibulum. At augue eget arcu dictum varius duis. Mauris ultrices
-          eros in cursus turpis massa (Lindberg, 1967). Libero nunc consequat interdum varius sit amet mattis. Ut ornare
-          lectus sit amet est placerat in egestas erat. Elementum curabitur vitae nunc sed. Proin nibh nisl condimentum
-          id venenatis a condimentum vitae sapien (Chamberlin et al., 2008). Vitae tempus quam pellentesque nec nam
-          aliquam sem.
-        </p>
+        <h2>2. Scope, Problem Statement and Existing Technology</h2>
       </div>
 
       <div id="sub-section-2-header-1">
-        <h3>2.1. Sub-section Header 1</h3>
+        <h3>2.1. Scope</h3>
+      </div>
+
+      <div>
+        <h4><u>2.1.1 Stakeholder's Analysis</u></h4>
         <p>
-          Pellentesque nec nam aliquam sem et tortor consequat. Et netus et malesuada fames ac turpis egestas maecenas.
-          Eu tincidunt tortor aliquam nulla facilisi. Nunc aliquet bibendum enim facilisis gravida. Elementum pulvinar
-          etiam non quam lacus (Moll et al., 2011; Parker & Fox, 2010). Blandit cursus risus at ultrices mi. Arcu dui
-          vivamus arcu felis bibendum ut tristique. Porttitor rhoncus dolor purus non enim praesent elementum facilisis.
-          Mauris in aliquam sem fringilla. Non quam lacus suspendisse faucibus. Tristique senectus et netus et malesuada
-          fames ac. <a href="#image">Link to the image above</a>
+          In order to understand who would be affected by our proposed solution, we first conducted 
+          a stakeholder analysis, categorising our stakeholders into four key groups based on their 
+          levels of influence and interest in the project. From this, we identified the pharmacists 
+          and hospital operations team as our key players, given their significant involvement in 
+          and influence over the DDS-2 workflow. Patients and caregivers are not directly involved 
+          in the restocking process and remain as indirect stakeholders. Any improvements in 
+          efficiency and medication safety could ultimately benefit them but they have significantly 
+          lower interest and influence compared to our key players. The hospital IT team, on the other 
+          hand, plays an important role in approving the implementation of any automated solution, 
+          although their limited involvement in the daily workflow means they have comparatively lower 
+          interest. Meanwhile, pharmacy technicians, who are responsible for carrying out Steps 1 and 2 
+          of the restocking process, have a high level of interest in any improvements made, but less 
+          influence over implementation decisions compared to pharmacists and the hospital operations 
+          team. Finally, we also considered home-visit nurses, as the hospital operations team hopes 
+          that any automation developed could eventually be extended beyond the pharmacy. These nurses 
+          face similar challenges in counting blisters and verifying medication details, and could 
+          therefore benefit from a more accurate, automated approach. However, since they fall outside 
+          the immediate scope of our project, their current interest and influence remain relatively 
+          low, making them a potential consideration for future development.
         </p>
+
+        <image-component
+        tag="image"
+        source="assets/Scope.png"
+        subtitle="Figure 4: Stakeholder analysis of the DDS-2 restocking process. The stakeholders are categorised into four groups based on their levels of influence and interest in the project.">
+        </image-component>
 
         <!-- This is an example of how you might use the video component -->
         <video-component tag="rick" source="https://www.youtube.com/embed/dQw4w9WgXcQ"
           subtitle="Video: Never gonna give you up?"></video-component>
+
+        <p>
+          With the stakeholders identified, we ultimately decided to focus primarily on the pharmacists 
+          and hospital operations team, as they stand to benefit most directly from improvements to the 
+          workflow. For the hospital operations team, a more streamlined and automated restocking process 
+          could enable better manpower allocation and more effective pharmacy planning. For pharmacists, 
+          who already juggle multiple responsibilities in a high-pressure environment, reducing the time 
+          spent manually verifying cartridge information would allow them to redirect their time and 
+          energy towards other essential duties.
+        </p>
       </div>
 
-      <div id="sub-section-2-header-2">
-        <h3>2.2. Sub-section Header 2</h3>
+      <div>
+        <h4><u>2.1.1 User Survey</u></h4>
         <p>
-          Vitae proin sagittis nisl rhoncus mattis rhoncus urna neque viverra. Dignissim convallis aenean et tortor at
-          risus viverra adipiscing. Facilisi nullam vehicula ipsum a arcu cursus. Adipiscing elit pellentesque
-          habitant
-          morbi tristique senectus et netus. Turpis massa tincidunt dui ut ornare lectus. Suspendisse sed nisi lacus
-          sed. Diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Ut ornare lectus sit amet est
-          placerat in egestas. Magna fringilla urna porttitor rhoncus. Imperdiet dui accumsan sit amet.
+          To ensure that our solution addresses the challenges faced by those working directly with the 
+          system, we needed to understand their experiences firsthand. We therefore conducted a survey 
+          among NUH pharmacy staff to gather diverse perspectives and identify their most pressing 
+          needs. The response rate was 33% with 22 responses. One of the questions we asked was, "Which 
+          stages of restocking were most difficult?" The results revealed that counting was, by far, the 
+          most challenging step, largely due to the repetitive nature and high volume of the restocking 
+          workflow. This was followed by blister information verification, blister orientation, and 
+          database entry. These findings helped us identify the areas where improvements would have the 
+          greatest impact.
         </p>
 
-        <!-- This is an example of how you might use the table component -->
-        <table-component subtitle="Table: Demo table">
-          <div id="table-1"></div>
-        </table-component>
+        <p>
+          Having identified the most challenging stages, the next question was: What improvements do the 
+          users actually want? To find out, we asked respondents which steps they would find most useful 
+          to automate. Once again, counting emerged as the top priority, while blister information 
+          verification and orientation also ranked highly. This alignment between the most difficult 
+          tasks and the most desired areas for automation highlights a clear demand for a solution that 
+          can reduce the burden of manual cartridge restocking. However, when we asked respondents about 
+          their greatest concerns regarding a proposed solution, accuracy was the most frequently cited 
+          issue. This reveals an important consideration: while users want greater automation, it cannot 
+          come at the expense of accuracy. Our solution must therefore reduce repetitive manual work while 
+          maintaining, or ideally improving, the reliability of the existing process.
+        </p>
+
+        <p>
+          Beyond improving the daily workflow for pharmacy staff, automation could also bring broader 
+          operational benefits through more efficient resource allocation and cost-effective pharmacy 
+          planning. According to the NUHS Centre for Healthcare Innovation, the projected annual manpower 
+          savings from pharmacy automation could reach up to S$3.3 million per year and a 2.5-fold 
+          reduction in supply-related medication errors (Centre for Healthcare Innovation, 2026). 
+          Although these figures reflect the broader potential of pharmacy automation rather than our 
+          specific solution, they highlight the significant value that streamlining manual processes can 
+          bring. By automating the cartridge restocking phase, we therefore aim to address challenges at 
+          both levels: reducing the workload and stress experienced by pharmacists and pharmacy 
+          technicians, while also supporting the hospital operations team in optimising manpower and 
+          resources.
+        </p>
+      </div>
+      
+      <div id="sub-section-2-header-2">
+        <h3>2.2. Problem Statement</h3>
+        <p>
+          We defined the problem statement for our project from the perspective of the pharmacists and 
+          hospital operations team, who are the primary stakeholders in the DDS-2 restocking process. The 
+          problem statement is as follows:
+        </p>
+
+        <p style="text-align: center; font-size: 1.4rem; font-weight: 600; margin: 30px auto; max-width: 800px;color: #156082;">
+          Despite stringent medication-safety requirements, NUH Pharmacy’s manual DDS-2 cartridge 
+          replenishment workflow is vulnerable to counting and medication verification errors due to 
+          human workload, visual limitations, label clarity, and packaging variation.
+        </p>
+      </div>
+
+      <div id="sub-section-2-header-3">
+        <h3>2.3. Existing Technology</h3>
+      </div>
+
+      <div>
+        <h4><u>2.3.1 JVM VIXEN EX</u></h4>
+        <p>
+          The JVM VIXEN EX is an automated medication inspection system that uses imaging technology to 
+          extract and verify patient and medication information printed on packaged medication pouches. 
+          It also incorporates an error-identification mechanism that marks incorrectly packaged 
+          medication for re-inspection, providing a useful reference for the proposed rejection system.
+        </p>
+
+        <p>
+          However, the VIXEN EX is designed to inspect medication after pouch packaging rather than 
+          intact manufacturer blister packs. It does not support automated blister counting or 
+          verification of batch numbers and expiry dates printed directly on blister foil. Consequently, 
+          it does not fully address the requirements of the DDS-2 cartridge replenishment workflow.
+        </p>
+      </div>
+
+      <div>
+        <h4><u>2.3.2 Pharmablister Countmaster</u></h4>
+        <p>
+          The Pharmablister Countmaster integrates automated blister counting, visual defect detection, 
+          and rejection mechanisms to improve pharmacy efficiency and inventory accuracy. Its combination 
+          of blister singulation, inspection, and counting provides a relevant reference for the proposed 
+          solution.
+        </p>
+
+        <p>
+          However, its rejection mechanism primarily identifies physically defective blister packs, such 
+          as those with missing tablets or damaged packaging, rather than incorrect batch numbers or 
+          expiry dates. Furthermore, it does not incorporate OCR-based extraction and verification of 
+          printed blister information. As these functions are essential to the DDS-2 workflow, the 
+          Countmaster alone is insufficient to meet the project's requirements.
+        </p>
+      </div>
+
+      <div>
+        <h4><u>2.3.3 SEA Vision Harle2D</u></h4>
+        <p>
+          The SEA Vision Harle2D is an automated pharmaceutical inspection system that utilises Optical 
+          Character Recognition (OCR), Optical Character Verification (OCV), and specialised lighting to 
+          verify printed medication information, including batch numbers and expiry dates. Its use of 
+          controlled illumination to minimise reflections from aluminium blister foil provides a relevant 
+          reference for the proposed solution's imaging and verification system.
+        </p>
+
+        <p>
+          However, the Harle2D is primarily designed for integration into pharmaceutical manufacturing 
+          lines rather than hospital pharmacy restocking workflows. It does not specifically address 
+          automated blister counting, individual blister handling, or cartridge replenishment. Therefore, 
+          despite its relevant information verification capabilities, it does not provide a complete 
+          solution for the DDS-2 workflow
+        </p>
+      </div>
+
+      <div>
+        <h4><u>2.3.4 Jornen Desblister Machine DBM80</u></h4>
+        <p>
+          The Jornen DBM80 is designed for removing medication from blister packaging. Its adjustable 
+          feeding mechanism, bottom-feed singulation, and vertical magazine feeder provide useful 
+          references for handling blister packs of varying dimensions while maintaining individual blister 
+          alignment.
+        </p>
+
+        <p>
+          However, the DBM80 is intended for deblistering rather than inspecting and restocking intact blister packs. 
+          It does not incorporate automated blister counting, imaging-based information extraction, or 
+          verification of batch numbers and expiry dates. Consequently, its mechanical features may 
+          inform the proposed blister feeding mechanism, but additional inspection and verification 
+          systems would be required to meet the DDS-2 workflow requirements.
+        </p>
+      </div>
+
+      <div>
+        <h4><u>2.3.5 Summary of Existing Technology</u></h4>
+        <p>
+          Ultimately, while each of these three technologies offers valuable features that we can learn 
+          from, none provides a complete solution to the specific challenges faced during NUH Pharmacy's 
+          DDS-2 cartridge replenishment workflow. This highlights the opportunity for us to integrate 
+          their relevant strengths into a solution that can accurately count, verify, and handle blister 
+          blisters without damaging their packaging, while addressing the needs and concerns identified 
+          by our stakeholders.
+        </p>
       </div>
     </div>
 
+    
     <!-- This is an example of how you can use the references component to create references -->
     <div id="references" class="references">
       <sl-divider></sl-divider>
