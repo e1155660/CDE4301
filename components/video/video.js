@@ -34,6 +34,7 @@ class Video extends HTMLElement {
       }
 
       iframe {
+        width: 100%;
         aspect-ratio: 16 / 9;
         display: block;
         margin: auto;

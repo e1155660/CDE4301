@@ -1,6 +1,7 @@
+
 class ImageComponent extends HTMLElement {
   static get observedAttributes() {
-    return ["tag", "source", "subtitle"];
+    return ["tag", "source", "subtitle", "scrollable"];
   }
 
   constructor() {
@@ -18,27 +19,55 @@ class ImageComponent extends HTMLElement {
 
   render() {
     const div = document.createElement("div");
+    const isScrollable = this.hasAttribute("scrollable");
+
     div.innerHTML = `
-    <img id="${this.tag}" src="${this.source}" alt="${this.subtitle}">
-    <sub>${this.subtitle}</sub>
-    <style>
-      :host {
-        display: block;
-        text-align: center;
-      }
+      <div class="${isScrollable ? "scrollable-image" : "normal-image"}">
+        <img id="${this.tag}" src="${this.source}" alt="${this.subtitle}">
+      </div>
 
-      img {
-        width: 100%;
-      }
+      <sub>${this.subtitle}</sub>
 
-      sub {
-        font-size: 1rem;
-        font-style: italic;
-      }
-    </style>
-  `;
+      <style>
+        :host {
+          display: block;
+          text-align: center;
+        }
 
-    this.shadowRoot.appendChild(div);
+        .normal-image {
+          width: 70%;
+          margin: auto;
+        }
+
+        .normal-image img {
+          display: block;
+          width: 100%;
+          height: auto;
+        }
+
+        .scrollable-image {
+          width: 70%;
+          margin: auto;
+          overflow-x: auto;
+        }
+
+        .scrollable-image img {
+          display: block;
+          width: 1400px;
+          max-width: none;
+          height: auto;
+        }
+
+        sub {
+          display: block;
+          font-size: 1rem;
+          font-style: italic;
+          margin-top: 8px;
+        }
+      </style>
+    `;
+
+    this.shadowRoot.replaceChildren(div);
   }
 }
 

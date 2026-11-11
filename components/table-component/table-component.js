@@ -1,13 +1,12 @@
 new gridjs.Grid({
-  columns: ["Name", "Email", "Phone Number"],
+  columns: ["Step","Average Time Taken (in minutes)"],
   data: [
-    ["John", "john@example.com", "(353) 01 222 3333"],
-    ["Mark", "mark@gmail.com", "(01) 22 888 4444"],
-    ["Eoin", "eoin@gmail.com", "0097 22 654 00033"],
-    ["Sarah", "sarahcdd@gmail.com", "+322 876 1233"],
-    ["Afshin", "afshin@mail.com", "(353) 22 87 8356"],
+    ["Step 1", 5.52],
+    ["Step 2", 1.25],
+    ["Step 3", 1.32],
+    ["Total Time Taken", 8.09],
   ],
-}).render(document.getElementById("table-1"));
+}).render(document.getElementById("Table-1"));
 
 class TableComponent extends HTMLElement {
   static get observedAttributes() {
