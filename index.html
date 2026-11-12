@@ -43,10 +43,10 @@
 
     <!-- This is the team member component use to display details about your team members -->
     <div class="team-member-wrapper">
-      <team-member avatar="assets/blackranger.png" name="Jegan Anitha Nikitha Merlin" department="Biomedical Engineering"></team-member>
-      <team-member avatar="assets/yellowranger.png" name="Looi Zhao Tian" department="Mechanical Engineering"> </team-member>
-      <team-member avatar="assets/redranger.png" name="Low Jia Shuen" department="Biomedical Engineering"></team-member>
-      <team-member avatar="assets/pinkranger.png" name="Preeti Kumar Balu" department="Biomedical Engineering"></team-member>
+      <team-member name="Jegan Anitha Nikitha Merlin" department="Biomedical Engineering"></team-member>
+      <team-member name="Looi Zhao Tian" department="Mechanical Engineering"> </team-member>
+      <team-member name="Low Jia Shuen" department="Biomedical Engineering"></team-member>
+      <team-member name="Preeti Kumar Balu" department="Biomedical Engineering"></team-member>
     </div>
 
     <!-- This is a divide from the shoelace library for aesthetic purpose -->
@@ -112,6 +112,15 @@
           <sl-tree-item><a href="#sub-section-6-header-4">6.4. Proposed Operating Mechanism</a></sl-tree-item>
           <sl-tree-item><a href="#sub-section-6-header-5">6.5. Limitations and Future Improvements</a></sl-tree-item>
         </sl-tree-item>
+
+        <sl-tree-item expanded>
+          <a href="#section-header-7">7. Conclusion</a>
+        </sl-tree-item>
+
+        <sl-tree-item expanded>
+          <a href="#section-header-8">8. Appendix</a>
+        </sl-tree-item>
+
         <sl-tree-item><a href="#references">References</a></sl-tree-item>
       </sl-tree>
     </div>
@@ -300,10 +309,6 @@
         subtitle="Figure 4: Stakeholder analysis of the DDS-2 restocking process. The stakeholders are categorised into four groups based on their levels of influence and interest in the project.">
         </image-component>
 
-        <!-- This is an example of how you might use the video component -->
-        <video-component tag="rick" source="https://www.youtube.com/embed/dQw4w9WgXcQ"
-          subtitle="Video: Never gonna give you up?"></video-component>
-
         <p>
           With the stakeholders identified, we ultimately decided to focus primarily on the pharmacists 
           and hospital operations team, as they stand to benefit most directly from improvements to the 
@@ -383,6 +388,8 @@
           human workload, visual limitations, label clarity, and packaging variation.
         </p>
       </div>
+
+      <br />
 
       <div id="sub-section-2-header-3">
         <h3>2.3. Existing Technology</h3>
@@ -484,10 +491,9 @@
       <div id="sub-section-3-header-1">
         <h3>3.1. Design Objectives and Requirements</h3>
         <p>
-          The proposed OptIVS design aims to improve the efficiency and reliability of restocking medication 
-          blisters into the existing DDS-2 system at NUH Pharmacy. The design focuses on reducing repetitive 
-          manual counting and verification tasks while ensuring medication safety and minimising disruption to 
-          existing pharmacy operations.
+          Our proposed OptIVS design aims to improve the efficiency and reliability of restocking medication blisters into 
+          the existing DDS-2 system at NUH Pharmacy. The design focuses on reducing repetitive manual counting and verification 
+          tasks while ensuring medication safety and minimising disruption to existing pharmacy operations.
         </p>
 
         <p>
@@ -567,18 +573,11 @@
     <p>The OCR comparison used 30 test images containing 92 annotated text regions (46 batch numbers and 46 expiry dates). All pipelines were evaluated against the same target set. As some images contained multiple targets, these regions were not statistically independent. The test images came from brands represented in the dataset and hence performance on unseen brands remains unknown in this interim.</p>
     <h4><u>4.2.2 OCR and YOLO Configurations</u></h4>
     <p>PaddleOCR, EasyOCR, and Tesseract were evaluated using whole-image OCR and YOLO-oriented bounding box (YOLO-OBB) localisation, where detected text regions were cropped before recognition. Three YOLO configurations were investigated (Table 2).</p>
-    <div style="overflow-x: auto;">
-      <table style="width:100%; border-collapse:collapse;" border="1" cellpadding="8">
-        <caption style="caption-side:bottom; padding:8px; font-style:italic;">Table 2: OCR and YOLO configurations used in the text-extraction comparison.</caption>
-        <thead><tr><th>Configuration</th><th>Description</th><th>Purpose</th></tr></thead>
-        <tbody>
-          <tr><td>Whole-image OCR</td><td>OCR processes the complete blister image.</td><td>Provides a baseline without YOLO localisation.</td></tr>
-          <tr><td>1-class YOLO + OCR</td><td>Annotated regions are detected as one general text class.</td><td>Tests general text localisation.</td></tr>
-          <tr><td>2-class YOLO + OCR</td><td>Batch numbers and expiry dates are detected as separate classes.</td><td>Tests field-specific localisation.</td></tr>
-          <tr><td>3-class YOLO + OCR</td><td>Batch numbers, expiry dates and Pill Details are detected as separate classes.</td><td>Tests whether distinguishing Pill Details helps route relevant fields.</td></tr>
-        </tbody>
-      </table>
-    </div>
+    
+    <table-component subtitle="Table 2: OCR and YOLO configurations used in the text-extraction comparison.">
+      <div id="Table-2"></div>
+    </table-component>
+
     <p>Both approaches produced text for comparison with reference transcriptions. Whole-image OCR predictions were assigned to annotated target fields, while YOLO-assisted predictions were obtained from detected crops (Figure 9).</p>
     <image-component tag="image" source="assets/Fig%209.png" subtitle="Figure 9: Evaluation workflow for (a) whole-image and (b) YOLO-assisted OCR pipelines."></image-component>
     <h4><u>4.2.3 Evaluation Metrics and Scoring</u></h4>
@@ -640,25 +639,11 @@
   <div id="sub-section-5-header-3">
     <h3>5.3 Blister Presentation Concept Analysis</h3>
     <p>The vertical-drop and horizontal-conveyor concepts were compared using a qualitative decision matrix based on preliminary observations and pharmacy staff feedback (Table 3). The scores represent relative design judgements rather than measured performance.</p>
-    <div style="overflow-x:auto;">
-      <table style="width:100%; border-collapse:collapse;" border="1" cellpadding="8">
-        <caption style="caption-side:bottom; padding:8px; font-style:italic;">Table 3: Preliminary comparison of the vertical-drop and horizontal-conveyor concepts.</caption>
-        <thead><tr><th>Selection criterion</th><th>Vertical drop</th><th>Horizontal conveyor</th></tr></thead>
-        <tbody>
-          <tr><td>Verification accuracy</td><td>−</td><td>+</td></tr>
-          <tr><td>Singulation reliability</td><td>−</td><td>0</td></tr>
-          <tr><td>Packaging safety</td><td>−</td><td>0</td></tr>
-          <tr><td>Ease of operation</td><td>0</td><td>+</td></tr>
-          <tr><td>Error Proof</td><td>−</td><td>+</td></tr>
-          <tr><td>Implementation feasibility</td><td>0</td><td>0</td></tr>
-          <tr><td>Sum +'s</td><td>0</td><td>3</td></tr>
-          <tr><td>Sum −'s</td><td>4</td><td>0</td></tr>
-          <tr><td>Sum 0's</td><td>1</td><td>2</td></tr>
-          <tr><td>Net Score</td><td>−4</td><td>3</td></tr>
-          <tr><td>Continue</td><td>No</td><td>Yes</td></tr>
-        </tbody>
-      </table>
-    </div>
+
+    <table-component subtitle="Table 3: Preliminary comparison of the vertical-drop and horizontal-conveyor concepts.">
+      <div id="Table-3"></div>
+    </table-component>
+
     <p>The horizontal conveyor was preferred due to its more controlled blister positioning and greater flexibility in image-capture timing. In contrast, the vertical-drop mechanism presented challenges in controlling blisters of varying dimensions, and OCR failed to detect text during preliminary drop testing (Figure 21).</p>
     <p>NUH pharmacy staff also raised concerns about releasing multiple blisters together and applying excessive pressure that could damage packaging or dislodge tablets. Staff preferred verification of every blister to random sampling. Singulation, consistent image capture and packaging safety are consequently important design requirements.</p>
     <p>Hence, the horizontal conveyor was selected for further development. Next steps include adjusting guide rails and contact surfaces for different blister sizes, limiting feeding force and inspecting packaging after repeated trials.</p>
@@ -671,6 +656,25 @@
     <p>Following subsystem integration, the complete prototype will be evaluated for verification accuracy, processing time, singulation reliability, and packaging safety across different blister types. Its performance and operational efficiency will then be compared against the existing NUH pharmacy restocking workflow.</p>
   </div>
 </div>
+    <br />
+    <sl-divider></sl-divider>
+    <div>
+      <div id="section-header-6">
+        <h2>6. Prototype Design and Development</h2>
+      </div>
+
+      <div id="sub-section-6-header-1">
+        <h3>6.1. Overall Prototype Architecture</h3>
+        <p>
+          Following the concept evaluation, the horizontal conveyor system 
+          was developed into the first OptIVS prototype. The proposed design integrates a 
+          vertical blister magazine, an individual blister feeding mechanism, a horizontal 
+          conveyor, a camera-based inspection region and separate collection areas for accepted 
+          and rejected blisters (shown in Figure 22).
+        </p>
+      </div>
+    </div>
+
 
     <!-- This is an example of how you can use the references component to create references -->
     <div id="references" class="references">

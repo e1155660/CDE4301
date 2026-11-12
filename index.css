@@ -26,3 +26,45 @@ p {
   text-align: justify;
   font-size: 1.1rem;
 }
+
+
+/* Grid.js table styling */
+
+.gridjs-wrapper {
+  border: none;
+  box-shadow: none;
+}
+
+table.gridjs-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Header */
+th.gridjs-th {
+  background-color: #004aad !important;
+  color: white !important;
+  font-weight: bold;
+  text-align: center !important;
+  border: 1.3px solid black !important;
+  padding: 12px;
+}
+
+/* Table cells */
+td.gridjs-td {
+  background-color: #F7F9FC !important;
+  color: black;
+  text-align: center;
+  border: 1.3px solid black !important;
+  padding: 10px;
+}
+
+/* Bold first column */
+td.gridjs-td:first-child {
+  font-weight: bold;
+}
+
+/* Remove alternating row colours */
+tr.gridjs-tr:nth-child(even) td.gridjs-td {
+  background-color: #F7F9FC !important;
+}
