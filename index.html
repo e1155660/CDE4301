@@ -79,29 +79,44 @@
           </sl-tree-item>
         </sl-tree-item>
 
-<!-- Replace the existing table-of-contents entries from "3. Testing" through "7. References" with this block. -->
-<!-- Section 3 and Design are plain text until their page sections are added. -->
-<sl-tree-item>3. Section to be added</sl-tree-item>
-<sl-tree-item expanded>
-  <a href="#section-header-4">4. Testing</a>
-  <sl-tree-item><a href="#sub-section-4-header-1">4.1 Image Acquisition Testing</a></sl-tree-item>
-  <sl-tree-item><a href="#sub-section-4-header-2">4.2 Text Extraction</a></sl-tree-item>
-  <sl-tree-item><a href="#sub-section-4-header-3">4.3 Blister Presentation Concept Evaluation</a></sl-tree-item>
-</sl-tree-item>
-<sl-tree-item expanded>
-  <a href="#section-header-5">5. Analysis</a>
-  <sl-tree-item><a href="#sub-section-5-header-1">5.1 Image Acquisition</a></sl-tree-item>
-  <sl-tree-item><a href="#sub-section-5-header-2">5.2 Text Extraction Performance</a></sl-tree-item>
-  <sl-tree-item><a href="#sub-section-5-header-3">5.3 Blister Presentation Concept Analysis</a></sl-tree-item>
-  <sl-tree-item><a href="#sub-section-5-header-4">5.4 Limitations and Next Steps</a></sl-tree-item>
-</sl-tree-item>
-<sl-tree-item>6. Prototype Design and Development (to be added)</sl-tree-item>
-<sl-tree-item><a href="#references">References</a></sl-tree-item>
-
+        <sl-tree-item expanded>
+          <a href="#section-header-3" class="anchor-link">3. Design </a>
+          <sl-tree-item>
+            <a href="#sub-section-3-header-1">3.1. Design Objectives and Requirements </a>
+          </sl-tree-item>
+          <sl-tree-item>
+            <a href="#sub-section-3-header-2">3.2. Concept Generation and Development</a>
+          </sl-tree-item>
+        </sl-tree-item>
+    
+        <sl-tree-item expanded>
+          <a href="#section-header-4">4. Testing</a>
+          <sl-tree-item><a href="#sub-section-4-header-1">4.1 Image Acquisition Testing</a></sl-tree-item>
+          <sl-tree-item><a href="#sub-section-4-header-2">4.2 Text Extraction</a></sl-tree-item>
+          <sl-tree-item><a href="#sub-section-4-header-3">4.3 Blister Presentation Concept Evaluation</a></sl-tree-item>
+        </sl-tree-item>
+        
+        <sl-tree-item expanded>
+          <a href="#section-header-5">5. Analysis</a>
+          <sl-tree-item><a href="#sub-section-5-header-1">5.1 Image Acquisition</a></sl-tree-item>
+          <sl-tree-item><a href="#sub-section-5-header-2">5.2 Text Extraction Performance</a></sl-tree-item>
+          <sl-tree-item><a href="#sub-section-5-header-3">5.3 Blister Presentation Concept Analysis</a></sl-tree-item>
+          <sl-tree-item><a href="#sub-section-5-header-4">5.4 Limitations and Next Steps</a></sl-tree-item>
+        </sl-tree-item>
+        
+        <sl-tree-item expanded>
+          <a href="#section-header-6">6. Prototype Design and Development</a>
+          <sl-tree-item><a href="#sub-section-6-header-1">6.1. Overall Prototype Architecture</a></sl-tree-item>
+          <sl-tree-item><a href="#sub-section-6-header-2">6.2. Blister Feeding and Transportation Mechanism</a></sl-tree-item>
+          <sl-tree-item><a href="#sub-section-6-header-3">6.3. Inspection and Rejection Mechanism</a></sl-tree-item>
+          <sl-tree-item><a href="#sub-section-6-header-4">6.4. Proposed Operating Mechanism</a></sl-tree-item>
+          <sl-tree-item><a href="#sub-section-6-header-5">6.5. Limitations and Future Improvements</a></sl-tree-item>
+        </sl-tree-item>
+        <sl-tree-item><a href="#references">References</a></sl-tree-item>
       </sl-tree>
     </div>
-    <sl-divider></sl-divider>
 
+    <sl-divider></sl-divider>
     <div>
 
       <!-- This is an example of what a section might look like -->
@@ -182,12 +197,13 @@
         </image-component>
 
         <p>
-          The results, presented in Table 1, indicate that the process takes approximately 
-          eight minutes per cartridge. Although this may not seem significant for a single cartridge, 
-          the time accumulates considerably when staff have to restock 50 - 60 cartridges throughout 
-          the day which could take more than 8 hours a day. A staff at NUH pharmacy had noted that 
-          he is "burnt out after counting 10 cartridges a day.” The repetitive checks are essential 
-          for patient safety, they also increase the time required for the restocking process.
+          The results, presented in Table 1, indicate that the process takes approximately eight minutes per 
+          cartridge. Although this may not seem significant for a single cartridge, the time accumulates 
+          considerably when staff have to restock 50 - 60 cartridges throughout the day which could take more 
+          than 8 hours a day. This places a considerable burden on pharmacy staff, with one staff member at 
+          NUH pharmacy noting that he feels "burnt out after counting 10 cartridges a day." While these 
+          repetitive checks are essential for patient safety, they also increase the time required for the 
+          restocking process.
         </p>
 
         <table-component subtitle="Table 1: Time taken by staff to reload 1 cartridge">
@@ -313,9 +329,15 @@
           greatest impact.
         </p>
 
+        <image-component
+        tag="image"
+        source="assets/Survey - rank.png"
+        subtitle="Figure 5: Weighted difficulty score of staff for 'Which stages of restocking were most difficult?' Difficulty score calculation in the Appendix">
+        </image-component>
+
         <p>
           Having identified the most challenging stages, the next question was: What improvements do the 
-          users actually want? To find out, we asked respondents which steps they would find most useful 
+          users actually want? (Figure 6)To find out, we asked respondents which steps they would find most useful 
           to automate. Once again, counting emerged as the top priority, while blister information 
           verification and orientation also ranked highly. This alignment between the most difficult 
           tasks and the most desired areas for automation highlights a clear demand for a solution that 
@@ -325,6 +347,12 @@
           come at the expense of accuracy. Our solution must therefore reduce repetitive manual work while 
           maintaining, or ideally improving, the reliability of the existing process.
         </p>
+
+        <image-component
+        tag="image"
+        source="assets/survey - piechart.png"
+        subtitle="Figure 6: Pie chart for the answers to survey questions as stated">
+        </image-component>
 
         <p>
           Beyond improving the daily workflow for pharmacy staff, automation could also bring broader 
@@ -445,6 +473,75 @@
       </div>
     </div>
 
+    <br />
+    <br />
+    <sl-divider></sl-divider>
+    <div>
+      <div id="section-header-3">
+        <h2>3. Design</h2>
+      </div>
+
+      <div id="sub-section-3-header-1">
+        <h3>3.1. Design Objectives and Requirements</h3>
+        <p>
+          The proposed OptIVS design aims to improve the efficiency and reliability of restocking medication 
+          blisters into the existing DDS-2 system at NUH Pharmacy. The design focuses on reducing repetitive 
+          manual counting and verification tasks while ensuring medication safety and minimising disruption to 
+          existing pharmacy operations.
+        </p>
+
+        <p>
+          The design requirements were established based on stakeholder feedback, workflow observations and the 
+          limitations of the existing restocking process. The primary functional requirements include automated blister 
+          counting, verification of batch numbers, expiry dates and medication details, detection of inconsistent blister 
+          orientation, and automatic rejection of non-conforming blisters. A target accuracy of approximately 99.99% was 
+          established for counting and information extraction. Additionally, the system must accommodate different blister 
+          dimensions, prevent damage to medication packaging and operate within the time constraints of the existing workflow.
+        </p>
+
+        <p>
+          The design adopts the poka-yoke principle, which emphasises mistake-proofing through mechanisms that prevent or 
+          detect errors without relying solely on operator attention. According to Saurin et al. (2012), poka-yoke devices can 
+          incorporate control functions that interrupt operations or automatically remove defective items, alongside warning 
+          functions that alert operators to abnormalities. By integrating automated inspection, controlled blister handling and 
+          a rejection mechanism, OptIVS applies these principles to identify and separate non-conforming blisters, reducing reliance 
+          on manual verification while supporting consistent and repeatable operation.
+        </p>
+      </div>
+
+      <div id="sub-section-3-header-2">
+        <h3>3.2. Concept Generation and Development</h3>
+        <p>
+          A morphological chart (shown in Figure 7) was developed to systematically explore solutions for the functions of OptIVS. 
+          These functions included blister singulation, transportation, image acquisition, text extraction, counting, information 
+          verification and rejection. Multiple mechanisms were considered for each function before being combined into two design 
+          concepts: a vertical drop-through system and a horizontal conveyor system.
+        </p>
+
+        <image-component
+        tag="image"
+        source="assets/Morphological chart.png"
+        subtitle="Figure 7: Morphological chart with the functions and options">
+        </image-component>
+
+        <p>
+          The vertical drop-through concept utilises a spring-driven pusher to release individual blisters from a horizontally 
+          arranged magazine. Each blister passes through an imaging region under gravity, where two high-speed cameras capture the 
+          medication information before the blister enters a collection tray. 
+        </p>
+
+        <p>
+          The horizontal conveyor concept employs a controlled feeding mechanism to transfer single blisters onto a moving conveyor belt. 
+          The blisters travel through an inspection region, where a camera captures images for information extraction and verification 
+          before the system decides whether to accept or reject them.
+        </p>
+
+        <p>
+          We evaluated both concepts to determine their suitability for integration into the proposed automated medication verification 
+          workflow, which is explained in Section 4.3.
+        </p>
+      </div>
+    </div>
     
 
 <!-- Paste this entire block immediately BEFORE <div id="references" class="references">. -->
