@@ -79,58 +79,25 @@
           </sl-tree-item>
         </sl-tree-item>
 
-        <sl-tree-item expanded>
-          <a href="#section-header-3">3. Testing</a>
-          <sl-tree-item>
-            <a href="#sub-section-3-header-1">3.1 Image Acquisition</a>
-          </sl-tree-item>
-          <sl-tree-item>
-            <a href="#sub-section-3-header-2">3.2 Text Extraction</a>
-          </sl-tree-item>
-          <sl-tree-item>
-            <a href="#sub-section-3-header-3">3.3 Blister Presentation Concept Evaluation</a>
-          </sl-tree-item>
-        </sl-tree-item>
+<!-- Replace the existing table-of-contents entries from "3. Testing" through "7. References" with this block. -->
+<!-- Section 3 and Design are plain text until their page sections are added. -->
+<sl-tree-item>3. Section to be added</sl-tree-item>
+<sl-tree-item expanded>
+  <a href="#section-header-4">4. Testing</a>
+  <sl-tree-item><a href="#sub-section-4-header-1">4.1 Image Acquisition Testing</a></sl-tree-item>
+  <sl-tree-item><a href="#sub-section-4-header-2">4.2 Text Extraction</a></sl-tree-item>
+  <sl-tree-item><a href="#sub-section-4-header-3">4.3 Blister Presentation Concept Evaluation</a></sl-tree-item>
+</sl-tree-item>
+<sl-tree-item expanded>
+  <a href="#section-header-5">5. Analysis</a>
+  <sl-tree-item><a href="#sub-section-5-header-1">5.1 Image Acquisition</a></sl-tree-item>
+  <sl-tree-item><a href="#sub-section-5-header-2">5.2 Text Extraction Performance</a></sl-tree-item>
+  <sl-tree-item><a href="#sub-section-5-header-3">5.3 Blister Presentation Concept Analysis</a></sl-tree-item>
+  <sl-tree-item><a href="#sub-section-5-header-4">5.4 Limitations and Next Steps</a></sl-tree-item>
+</sl-tree-item>
+<sl-tree-item>6. Prototype Design and Development (to be added)</sl-tree-item>
+<sl-tree-item><a href="#references">References</a></sl-tree-item>
 
-        <sl-tree-item expanded>
-          <a href="#section-header-4">4. Analysis</a>
-          <sl-tree-item>
-            <a href="#sub-section-4-header-1">4.1 Image Acquisition</a>
-          </sl-tree-item>
-          <sl-tree-item>
-            <a href="#sub-section-4-header-2">4.2 Text Extraction Performance</a>
-          </sl-tree-item>
-          <sl-tree-item>
-            <a href="#sub-section-4-header-3">4.3 Blister Presentation Concept Analysis</a>
-          </sl-tree-item>
-          <sl-tree-item>
-            <a href="#sub-section-4-header-4">4.4 Limitations and Next Steps</a>
-          </sl-tree-item>
-        </sl-tree-item>
-
-        <sl-tree-item expanded>
-          <a href="#section-header-5">5. Design</a>
-          <sl-tree-item>
-            <a href="#sub-section-5-header-1">5.1 Design Objectives and Requirements</a>
-          </sl-tree-item>
-          <sl-tree-item>
-            <a href="#sub-section-5-header-2">5.2 Concept Generation and Development</a>
-          </sl-tree-item>
-          <sl-tree-item>
-            <a href="#sub-section-5-header-3">5.3 Prototype Design and Development</a>
-          </sl-tree-item>
-          <sl-tree-item>
-            <a href="#sub-section-5-header-4">5.4 Proposed Operating Mechanism</a>
-          </sl-tree-item>
-        </sl-tree-item>
-
-        <sl-tree-item>
-          <a href="#section-header-6">6. Limitations and Future Improvements</a>
-        </sl-tree-item>
-
-        <sl-tree-item>
-          <a href="#references">7. References</a>
-        </sl-tree-item>
       </sl-tree>
     </div>
     <sl-divider></sl-divider>
@@ -479,6 +446,135 @@
     </div>
 
     
+
+<!-- Paste this entire block immediately BEFORE <div id="references" class="references">. -->
+<!-- Image paths match the filenames shown in the GitHub assets folder. -->
+<br><br>
+<sl-divider></sl-divider>
+<div>
+  <div id="section-header-4"><h2>4. Testing</h2></div>
+  <div id="sub-section-4-header-1">
+    <h3>4.1 Image Acquisition Testing</h3>
+    <h4><u>4.1.1 Lighting Assessment</u></h4>
+    <p>A preliminary assessment investigated the effects of lighting position on image quality using an adjustable cardboard enclosure and two USB spotlights. Illumination from above, parallel to the blister surface, and diagonally from below was evaluated visually based on glare, contrast, and embossed-text legibility.</p>
+    <p>Samples included medication types identified in NUH pharmacy error statistics and those obtained from team members' households: Amlodipine 10 mg, Paracil 500 mg, Senna 7.5 mg, Glyprin 100 mg/45 mg, Zenpro 20 mg, Diabetmin 850 mg, Rozuva FC 10 mg, and Uphamol 500 mg (Figure 8).</p>
+    <image-component tag="image" source="assets/Fig%208.png" subtitle="Figure 8: Seven blister types with the highest frequency of errors based on statistics provided by NUH pharmacy staff."></image-component>
+    <h4><u>4.1.2 Camera Comparison</u></h4>
+    <p>The Raspberry Pi and IDS U3-36L0XC cameras were each positioned at the top of the same enclosure and compared at different working distances. Image clarity was assessed visually, while preliminary recognition experiments were conducted using a pretrained OCR model from Hugging Face. Only the visual comparison is discussed in this report.</p>
+  </div>
+  <div id="sub-section-4-header-2">
+    <h3>4.2 Text Extraction</h3>
+    <p>Text extraction experiments assessed recognition of batch numbers and expiry dates on blister packaging. Three OCR engines were compared using whole-image OCR and You-Only-Look-Once (YOLO)-assisted text localisation.</p>
+    <h4><u>4.2.1 Data Set and Test Targets</u></h4>
+    <p>The dataset comprised 429 images across eight blister types, divided into 297 training, 87 validation, and 45 test images. A 70:20:10 split was targeted within each brand, with temporally adjacent captures grouped to reduce data leakage. Training incorporated flipping, scaling, and colour augmentation, with a maximum of 65 epochs and early stopping after 15 epochs without improvement.</p>
+    <p>The OCR comparison used 30 test images containing 92 annotated text regions (46 batch numbers and 46 expiry dates). All pipelines were evaluated against the same target set. As some images contained multiple targets, these regions were not statistically independent. The test images came from brands represented in the dataset and hence performance on unseen brands remains unknown in this interim.</p>
+    <h4><u>4.2.2 OCR and YOLO Configurations</u></h4>
+    <p>PaddleOCR, EasyOCR, and Tesseract were evaluated using whole-image OCR and YOLO-oriented bounding box (YOLO-OBB) localisation, where detected text regions were cropped before recognition. Three YOLO configurations were investigated (Table 2).</p>
+    <div style="overflow-x: auto;">
+      <table style="width:100%; border-collapse:collapse;" border="1" cellpadding="8">
+        <caption style="caption-side:bottom; padding:8px; font-style:italic;">Table 2: OCR and YOLO configurations used in the text-extraction comparison.</caption>
+        <thead><tr><th>Configuration</th><th>Description</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td>Whole-image OCR</td><td>OCR processes the complete blister image.</td><td>Provides a baseline without YOLO localisation.</td></tr>
+          <tr><td>1-class YOLO + OCR</td><td>Annotated regions are detected as one general text class.</td><td>Tests general text localisation.</td></tr>
+          <tr><td>2-class YOLO + OCR</td><td>Batch numbers and expiry dates are detected as separate classes.</td><td>Tests field-specific localisation.</td></tr>
+          <tr><td>3-class YOLO + OCR</td><td>Batch numbers, expiry dates and Pill Details are detected as separate classes.</td><td>Tests whether distinguishing Pill Details helps route relevant fields.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Both approaches produced text for comparison with reference transcriptions. Whole-image OCR predictions were assigned to annotated target fields, while YOLO-assisted predictions were obtained from detected crops (Figure 9).</p>
+    <image-component tag="image" source="assets/Fig%209.png" subtitle="Figure 9: Evaluation workflow for (a) whole-image and (b) YOLO-assisted OCR pipelines."></image-component>
+    <h4><u>4.2.3 Evaluation Metrics and Scoring</u></h4>
+    <p>The pipelines were assessed using character accuracy, exact-match accuracy, detection coverage and processing time. Predictions and references were normalised to uppercase and non-alphanumeric characters were removed before comparison.</p>
+    <p>Character accuracy was calculated using pooled character edit distance:</p>
+    <p style="text-align:center;">Character Accuracy = max(0, 1 − total character edit distance / total number of reference characters) × 100%</p>
+    <p>This measure reflects only partial text recognition, whereas exact-match accuracy is the proportion of target fields for which the complete normalised prediction matches the reference. Exact matching is relevant to batch numbers and expiry dates because one incorrect character may make a value unsuitable for verification. Detection coverage is the proportion of annotated target fields matched to a YOLO detection under the applicable matching criteria. It measures localisation but not whether the text was read correctly.</p>
+    <p>For whole-image OCR, annotated target regions were used to assign recognised text to the corresponding batch-number or expiry-date field for scoring. An OCR region was assigned to a target when at least 50% of its area lay within the annotated region (Nayef et al., 2017). All 92 targets remained in the evaluation denominator, including those for which no text was recognised.</p>
+    <p>Processing time was measured separately across 30 images containing the 92 targets. The 12 pipeline configurations were evaluated on a CPU, reporting mean and standard deviation in seconds per image. For whole-image OCR, timing only includes OCR on the full image while for YOLO-assisted pipelines, it covers detection, crop rectification and OCR of eligible detected regions. Image loading and one-time model initialisation were excluded. These measurements do not represent the complete time required by an integrated prototype.</p>
+    <h4><u>4.2.4 Additional Investigation</u></h4>
+    <p>The three-class YOLO model was manually evaluated across all 92 text targets, categorising detections as complete crops, partial crops, or misses to identify localisation errors affecting OCR.</p>
+  </div>
+  <div id="sub-section-4-header-3">
+    <h3>4.3 Blister Presentation Concept Evaluation</h3>
+    <p>Two blister presentation concepts were evaluated: a vertical-drop mechanism using side-mounted cameras to capture information on falling blisters, and a horizontal conveyor transporting individual blisters past a camera (Figures 10 and 11(a)). A preliminary conveyor prototype was developed to explore image presentation (Figure 11(b)).</p>
+    <p>Both concepts were compared using verification accuracy, singulation reliability, packaging safety, ease of operation, error-proofing, and implementation feasibility, reflecting NUH pharmacy staff concerns regarding blister handling and verification. The comparison informed concept selection in Section 5.3.</p>
+    <image-component tag="image" source="assets/Fig%2010.png" subtitle="Figure 10: Vertical-drop concept. (a) Top view (b) Side view."></image-component>
+    <image-component tag="image" source="assets/Fig%2011.png" subtitle="Figure 11: (a) Horizontal-conveyor concept and (b) preliminary prototype."></image-component>
+  </div>
+</div>
+
+<br><br>
+<sl-divider></sl-divider>
+<div>
+  <div id="section-header-5"><h2>5. Analysis</h2></div>
+  <div id="sub-section-5-header-1">
+    <h3>5.1 Image Acquisition</h3>
+    <h4><u>5.1.1 Lighting</u></h4>
+    <p>Lighting position affected text visibility. Direct illumination produced glare where the aluminium surface reflected light towards the camera, making some embossed characters harder to distinguish (Figure 12). Redirecting the spotlights towards the enclosure walls provided more diffuse illumination, reducing visible glare and improving text contrast (Figure 13). This arrangement was subsequently adopted for image acquisition.</p>
+    <p>However, improvements were assessed visually rather than through OCR accuracy measurements. Further controlled testing across different blister materials and embossing styles is required before lighting design is finalised.</p>
+    <image-component tag="image" source="assets/Fig%2012.png" subtitle="Figure 12: Effect of lighting position on glare and embossed text visibility."></image-component>
+    <h4><u>5.1.2 Camera Comparison</u></h4>
+    <p>Some small text remained unclear in Raspberry Pi camera images even after the blister was raised on platforms. The IDS camera was therefore evaluated in the same enclosure. In the examples assessed, its images appeared sharper and text remained in focus at a greater working distance (Figures 13 and 14). The IDS camera was subsequently selected to collect images for model development and testing.</p>
+    <p>As the comparison was primarily visual, improvements in OCR accuracy cannot yet be attributed to the camera change. Further evaluation under controlled working distances, exposure, and focus settings is required.</p>
+    <image-component tag="image" source="assets/Fig%2013.png" subtitle="Figure 13: Images captured during working-distance assessment: (a) Modified blister height by using platforms (b) Blister at different height captured on screen."></image-component>
+    <image-component tag="image" source="assets/Fig%2014.png" subtitle="Figure 14: Visual comparison of embossed text captured using (a) the Raspberry Pi camera and (b) the IDS camera."></image-component>
+  </div>
+  <div id="sub-section-5-header-2">
+    <h3>5.2 Text Extraction Performance</h3>
+    <p>Among the whole-image OCR engines, PaddleOCR achieved the highest character accuracy at 68.1%, compared with 21.0% for EasyOCR and 0.2% for Tesseract (Figure 15). Whole-image PaddleOCR achieved 47.8% exact-match accuracy, corresponding to 44 of the 92 batch-number and expiry-date targets after normalisation (Figure 16).</p>
+    <p>These metrics answer different questions. Character accuracy measures the pooled similarity of recognised text to the references; exact match requires the complete normalised field to be correct. A prediction can therefore contain several correct characters but still fail exact-label matching.</p>
+    <p>PaddleOCR was the strongest whole-image baseline, but further improvement is needed. Ground-truth regions were used to assign OCR output to fields for evaluation, so this result does not establish that the system can independently identify and assign every field in deployment, especially when encountering unseen blister images. PaddleOCR was selected for further investigation based on the interim comparison.</p>
+    <image-component tag="image" source="assets/Fig%2015.png" subtitle="Figure 15: Character accuracy of whole-image and YOLO-assisted OCR pipelines on 92 batch-number and expiry-date targets."></image-component>
+    <image-component tag="image" source="assets/Fig%2016.png" subtitle="Figure 16: Exact-match accuracy of whole-image and YOLO-assisted OCR pipelines on 92 batch-number and expiry-date targets."></image-component>
+    <h4><u>5.2.2 Effect of YOLO-assisted Cropping</u></h4>
+    <p>For PaddleOCR, the one-, two- and three-class YOLO configurations achieved character accuracies of 20.8%, 43.2% and 35.6%, respectively, compared with 68.1% for whole-image PaddleOCR. Although the two-class configuration performed best among YOLO-assisted pipelines, localisation and cropping did not improve recognition accuracy under the tested conditions.</p>
+    <p>Nguyen et al. (2026) reported a YOLO-OBB and OCR approach for engraved serial numbers on metallic surfaces using orientation handling and post-processing (Figure 17). These methods suggest directions for investigation although the reported performance is not directly comparable because the datasets and test conditions differ.</p>
+    <image-component tag="image" source="assets/Fig%2017.png" subtitle="Figure 17: Adapted from Fig 5 of Nguyen 2026."></image-component>
+    <h4><u>5.2.3 Three-class Detection and Crop Quality</u></h4>
+    <p>A missed or incomplete crop can prevent the OCR engine from receiving the full target text (Figure 18). Glare, low contrast and orientation are also possible contributors that require further investigation.</p>
+    <p>Manual review found 55 complete crops, four partial crops and 33 misses among the 92 targets (Figure 19). Thus, 59 targets were detected, contributing 64.1% of detection coverage. Although 55 of the 59 detected targets were fully captured, the 33 missed targets could not proceed through the intended OCR pathway.</p>
+    <p>These findings indicate that detection coverage remains a major limitation, requiring improvements in annotation consistency, dataset representation, and handling of challenging images.</p>
+    <image-component tag="image" source="assets/Fig%2018.png" subtitle="Figure 18: Examples of (a) missed, (b) overlapping and (c) successfully localised text regions."></image-component>
+    <image-component tag="image" source="assets/Fig%2019.png" subtitle="Figure 19: Manual review of 92 cropped text targets."></image-component>
+    <h4><u>5.2.5 Processing Time and Accuracy Trade-off</u></h4>
+    <p>The processing time experiment showed a trade-off between speed and recognition accuracy (Figure 20). For PaddleOCR, whole-image processing achieved 68.1% character accuracy but took approximately 40 seconds per image on the CPU. The two-class YOLO-assisted pipeline achieved a lower character accuracy of 43.2% but took approximately 2 seconds per image. In particular, missed detections reduce the number of regions passed to OCR and may reduce processing time. Future work should improve detection coverage while retaining the time benefit of YOLO cropping.</p>
+    <image-component tag="image" source="assets/Fig%2020.png" subtitle="Figure 20: Mean processing time per image for all pipelines across 30 images."></image-component>
+  </div>
+  <div id="sub-section-5-header-3">
+    <h3>5.3 Blister Presentation Concept Analysis</h3>
+    <p>The vertical-drop and horizontal-conveyor concepts were compared using a qualitative decision matrix based on preliminary observations and pharmacy staff feedback (Table 3). The scores represent relative design judgements rather than measured performance.</p>
+    <div style="overflow-x:auto;">
+      <table style="width:100%; border-collapse:collapse;" border="1" cellpadding="8">
+        <caption style="caption-side:bottom; padding:8px; font-style:italic;">Table 3: Preliminary comparison of the vertical-drop and horizontal-conveyor concepts.</caption>
+        <thead><tr><th>Selection criterion</th><th>Vertical drop</th><th>Horizontal conveyor</th></tr></thead>
+        <tbody>
+          <tr><td>Verification accuracy</td><td>−</td><td>+</td></tr>
+          <tr><td>Singulation reliability</td><td>−</td><td>0</td></tr>
+          <tr><td>Packaging safety</td><td>−</td><td>0</td></tr>
+          <tr><td>Ease of operation</td><td>0</td><td>+</td></tr>
+          <tr><td>Error Proof</td><td>−</td><td>+</td></tr>
+          <tr><td>Implementation feasibility</td><td>0</td><td>0</td></tr>
+          <tr><td>Sum +'s</td><td>0</td><td>3</td></tr>
+          <tr><td>Sum −'s</td><td>4</td><td>0</td></tr>
+          <tr><td>Sum 0's</td><td>1</td><td>2</td></tr>
+          <tr><td>Net Score</td><td>−4</td><td>3</td></tr>
+          <tr><td>Continue</td><td>No</td><td>Yes</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The horizontal conveyor was preferred due to its more controlled blister positioning and greater flexibility in image-capture timing. In contrast, the vertical-drop mechanism presented challenges in controlling blisters of varying dimensions, and OCR failed to detect text during preliminary drop testing (Figure 21).</p>
+    <p>NUH pharmacy staff also raised concerns about releasing multiple blisters together and applying excessive pressure that could damage packaging or dislodge tablets. Staff preferred verification of every blister to random sampling. Singulation, consistent image capture and packaging safety are consequently important design requirements.</p>
+    <p>Hence, the horizontal conveyor was selected for further development. Next steps include adjusting guide rails and contact surfaces for different blister sizes, limiting feeding force and inspecting packaging after repeated trials.</p>
+    <image-component tag="image" source="assets/Fig%2021.png" subtitle="Figure 21: Preliminary comparison of OCR output during (a) vertical-drop and (b) horizontal-conveyor blister presentation."></image-component>
+  </div>
+  <div id="sub-section-5-header-4">
+    <h3>5.4 Limitations and Next Steps</h3>
+    <p>The best-performing interim pipeline, whole-image PaddleOCR, achieved 68.1% character accuracy and 47.8% exact-match accuracy on the 92 targets. However, the limited test sample, absence of unseen-brand evaluation, and independent subsystem testing restrict the generalisability of these results. Further validation is required to determine whether the proposed 99.99% verification accuracy target is achievable.</p>
+    <p>Future work will optimise illumination using ring lights, LED strips, and diffusers, while evaluating camera resolution, focus, and capture speed under dynamic conditions. OCR improvements will focus on annotation consistency, additional training data, orientation handling, and post-processing. Model-assisted annotation may also be explored, subject to manual verification.</p>
+    <p>Following subsystem integration, the complete prototype will be evaluated for verification accuracy, processing time, singulation reliability, and packaging safety across different blister types. Its performance and operational efficiency will then be compared against the existing NUH pharmacy restocking workflow.</p>
+  </div>
+</div>
+
     <!-- This is an example of how you can use the references component to create references -->
     <div id="references" class="references">
       <sl-divider></sl-divider>
