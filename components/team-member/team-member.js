@@ -19,13 +19,12 @@ class TeamMember extends HTMLElement {
   render() {
     const div = document.createElement("div");
     div.innerHTML = `
-    <alt="${this.name}">
     <p><strong>${this.name}</strong></p>
     <p>${this.department}</p>
     <style>
       :host {
         display: block;
-        max-width: 160px;
+        max-width: 240px;
         text-align: center;
       }
 

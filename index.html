@@ -49,7 +49,6 @@
       <team-member name="Preeti Kumar Balu" department="Biomedical Engineering"></team-member>
     </div>
 
-    <!-- This is a divide from the shoelace library for aesthetic purpose -->
     <sl-divider></sl-divider>
 
     <!-- This is the table-of-content component use to define all of the link directly to each section -->
@@ -267,7 +266,6 @@
     </div>
 
 
-    <br />
     <br />
     <sl-divider></sl-divider>
     <div>
@@ -595,6 +593,7 @@
     <p>Two blister presentation concepts were evaluated: a vertical-drop mechanism using side-mounted cameras to capture information on falling blisters, and a horizontal conveyor transporting individual blisters past a camera (Figures 10 and 11(a)). A preliminary conveyor prototype was developed to explore image presentation (Figure 11(b)).</p>
     <p>Both concepts were compared using verification accuracy, singulation reliability, packaging safety, ease of operation, error-proofing, and implementation feasibility, reflecting NUH pharmacy staff concerns regarding blister handling and verification. The comparison informed concept selection in Section 5.3.</p>
     <image-component tag="image" source="assets/Fig%2010.png" subtitle="Figure 10: Vertical-drop concept. (a) Top view (b) Side view."></image-component>
+    <br><br>
     <image-component tag="image" source="assets/Fig%2011.png" subtitle="Figure 11: (a) Horizontal-conveyor concept and (b) preliminary prototype."></image-component>
   </div>
 </div>
@@ -672,9 +671,156 @@
           conveyor, a camera-based inspection region and separate collection areas for accepted 
           and rejected blisters (shown in Figure 22).
         </p>
+
+        <image-component tag="image" source="assets/model.png" subtitle="Figure 22: 3D model of the OptIVS Prototype">
+        </image-component>
+
+        <p>
+          The vertical magazine stores blisters in a stacked arrangement to facilitate sequential feeding. 
+          A mechanical pusher transfers individual blisters from the magazine onto the conveyor, reducing 
+          the need for operators to manually position each blister for inspection.
+        </p>
+
+        <p>
+          The conveyor transports the blister through a designated imaging region, where the camera captures 
+          the medication packaging for text extraction. The extracted information is compared against a reference 
+          to identify discrepancies before the blister is directed towards the appropriate collection area.
+        </p>
+      </div>
+
+      <div id="sub-section-6-header-2">
+        <h3>6.2. Blister Feeding and Transportation Mechanism</h3>
+        <p>
+          The blister feeding mechanism is designed to achieve singulation, whereby only one blister is 
+          released per feeding cycle. This is necessary to prevent overlapping blisters, which could obstruct 
+          the camera's field of view and compromise verification accuracy.
+        </p>
+
+        <p>
+          The proposed mechanism uses a controlled pusher to transfer the lowest available blister from the 
+          vertical magazine onto the conveyor. Following each feeding cycle, the remaining blister stack 
+          advances into position for subsequent dispensing.
+        </p>
+
+        <p>
+          The conveyor provides a controlled transportation path between the feeding mechanism and the 
+          inspection region. Compared with the vertical drop-through concept, this arrangement reduces 
+          dependence on gravitational motion and provides a more consistent blister position during image capture.
+        </p>
+      </div>
+
+      <div id="sub-section-6-header-3">
+        <h3>6.3. Inspection and Rejection Mechanism</h3>
+        <p>
+          The inspection subsystem is intended to operate in conjunction with the mechanical transportation 
+          system. As each blister reaches the imaging region, the camera captures the packaging surface 
+          for text extraction of the batch number, expiry date and pill details.
+        </p>
+
+        <p>
+          The prototype design also incorporates a proposed rejection mechanism to separate blisters 
+          that fail verification. When a mismatch is detected, the affected blister is intended to 
+          be diverted into a rejection area instead of proceeding towards the accepted collection area.
+        </p>
+      </div>
+
+      <div id="sub-section-6-header-4">
+        <h3>6.4. Proposed Operating Mechanism</h3>
+        <p>
+          The proposed OptIVS operating sequence (Video 2) begins with the operator restocking blisters into 
+          the vertical magazine in the required orientation. Before continuous operation, the system 
+          verifies the first three blisters for information and alignment in the inspection region. 
+          If their medication details and alignment are consistent, the system establishes these 
+          readings as the reference baseline. Otherwise, the system stops operation and alerts the 
+          operator to investigate the discrepancy.
+        </p>
+
+        <p>
+          Once the baseline is established, the feeding mechanism transfers individual blisters onto 
+          the horizontal conveyor. Each blister is transported through the inspection region, where 
+          images are acquired and processed to extract the relevant medication information.
+        </p>
+
+        <p>
+          The extracted batch number, expiry date and medication details are compared against the 
+          baseline. The system also checks whether the blister alignment is consistent with the reference.
+        </p>
+
+        <p>
+          Blisters satisfying the verification conditions are permitted to proceed towards the accepted 
+          collection tray. Conversely, blisters containing inconsistent information or alignment are 
+          directed towards the rejection area.
+        </p>
+
+        <p>
+          This sequence is repeated until the required quantity of blisters has been processed, then presents 
+          the data on a display. By combining sequential feeding, automated inspection and rejection, the proposed 
+          system aims to reduce manual counting and verification requirements while introducing an additional 
+          error-detection mechanism into the medication restocking process.
+        </p>
+
+        <div style="text-align: center; margin: 20px auto;">
+          <video controls style="display: block; width: 70%; height: auto; margin: 0 auto;">
+            <source src="components/video/prototype_1.mp4" type="video/mp4">
+            Your browser does not support video playback.
+          </video>
+          
+          <p style="text-align: center; font-size: 1rem; font-style: italic; margin-top: 8px;">
+            Video 2: Simulation of the proposed OptIVS operating mechanism
+          </p>
+        </div>
+      </div>
+
+      <div id="sub-section-6-header-5">
+        <h3>6.5. Limitations and Future Improvements</h3>
+        <p>
+          The initial prototype focuses on ensuring that the model can read, count, verify blisters, 
+          and sort blisters together with the mechanical properties.
+        </p>
+
+        <p>
+          Although the initial prototype establishes the proposed mechanical architecture, several limitations 
+          require further investigation. Variations in blister dimensions and thickness may affect feeding consistency, 
+          while insufficient mechanical clearance could result in jamming or packaging damage. Furthermore, the inspection 
+          and rejection mechanisms must be synchronised to ensure that non-conforming blisters are correctly identified and separated.
+        </p>
+
+        <p>
+          Future development will focus on refining the feeding mechanism, improving the camera and lighting arrangement, and 
+          improving the efficiency of the conveyor system. Experimental testing will be required to evaluate singulation reliability, 
+          packaging safety, verification accuracy and processing time across different blister formats.
+        </p>
+
+        <p>
+          Finally, the initial prototype will be evaluated against the existing NUH Pharmacy restocking workflow to determine whether 
+          the proposed solution can reduce manual workload without compromising medication safety.
+        </p>
       </div>
     </div>
 
+    <br />
+    <sl-divider></sl-divider>
+    <div>
+      <div id="section-header-7">
+        <h2>7. Conclusion</h2>
+        <p>
+          Through multiple site visits to NUH Pharmacy and a survey conducted with pharmacists, we gained a better understanding 
+          of the existing cartridge restocking workflow, its challenges, and potential areas for improvement. Based on our findings, 
+          we began developing and testing YOLO combined with different OCR models to automate the verification of medication blister 
+          details. We designed our first prototype to integrate the model into the pharmacy workflow for initial testing. Moving 
+          forward, we aim to further improve model accuracy, refine the prototype based on pharmacist feedback, and deploy it at 
+          NUH Pharmacy in the next semester to evaluate its effectiveness and identify areas for further improvement.
+        </p>
+      </div>
+    </div>
+
+    <br />
+    <sl-divider></sl-divider>
+    <div> 
+      <div id="section-header-8">
+        <h2>8. Appendix</h2>
+      </div>
+    </div>
 
     <!-- This is an example of how you can use the references component to create references -->
     <div id="references" class="references">
