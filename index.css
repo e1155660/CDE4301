@@ -80,3 +80,37 @@ td.gridjs-td:first-child {
 tr.gridjs-tr:nth-child(even) td.gridjs-td {
   background-color: #F7F9FC !important;
 }
+
+/* Add consistent spacing between figures */
+image-component {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 30px;
+    margin-bottom: 55px;
+    box-sizing: border-box;
+}
+
+/* Prevent images from being stretched */
+image-component img {
+    display: block;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    image-rendering: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Ensure figure captions wrap properly */
+image-component p,
+image-component figcaption {
+    display: block;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    text-align: center;
+    margin-top: 12px;
+}
