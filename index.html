@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 <head>
   <meta charset="UTF-8">
@@ -116,11 +117,14 @@
           <a href="#section-header-7">7. Conclusion</a>
         </sl-tree-item>
 
-        <sl-tree-item expanded>
-          <a href="#section-header-8">8. Appendix</a>
-        </sl-tree-item>
-
         <sl-tree-item><a href="#references">References</a></sl-tree-item>
+
+        <sl-tree-item expanded>
+          <a href="#appendix">Appendix</a>
+          <sl-tree-item><a href="#appendix-a">Appendix A: DDS-2 Restocking Process</a></sl-tree-item>
+          <sl-tree-item><a href="#appendix-b">Appendix B: Stakeholder Meetings and Survey Documentation</a></sl-tree-item>  
+          <sl-tree-item><a href="#appendix-c">Appendix C: Project Timeline and Progress</a></sl-tree-item>
+          <sl-tree-item><a href="#appendix-d">Appendix D: Team Member Contributions</a></sl-tree-item>
       </sl-tree>
     </div>
 
@@ -194,14 +198,13 @@
           verifies the entered information and recounts the blisters. Each step 
           is performed by different personnel, with the final verification always 
           conducted by a pharmacist. Errors at any step require the entire process to 
-          be repeated.
+          be repeated. A detailed process flow chart in in Appendix A.
         </p>
 
         <image-component
         tag="image"
         source="assets/Restocking.png"
-        subtitle="Figure 1: Steps in the restocking phase. The repetitive steps are underlined."
-        scrollable>
+        subtitle="Figure 1: Steps in the restocking phase. The repetitive steps are underlined.">
         </image-component>
 
         <p>
@@ -214,7 +217,7 @@
           restocking process.
         </p>
 
-        <table-component subtitle="Table 1: Time taken by staff to reload 1 cartridge">
+        <table-component subtitle="Table 1: Time taken by staff to reload 1 cartridge. The time is taken from one complete run">
           <div id="Table-1"></div>
         </table-component>
 
@@ -335,7 +338,7 @@
         <image-component
         tag="image"
         source="assets/Survey - rank.png"
-        subtitle="Figure 5: Weighted difficulty score of staff for 'Which stages of restocking were most difficult?' Difficulty score calculation in the Appendix">
+        subtitle="Figure 5: Weighted difficulty score of staff for 'Which stages of restocking were most difficult?' Difficulty score calculation in the Appendix B.3">
         </image-component>
 
         <p>
@@ -496,7 +499,7 @@
 
         <p>
           The design requirements were established based on stakeholder feedback, workflow observations and the 
-          limitations of the existing restocking process. The primary functional requirements include automated blister 
+          limitations of the existing restocking process (Detailed project timelline in Appendix C). The primary functional requirements include automated blister 
           counting, verification of batch numbers, expiry dates and medication details, detection of inconsistent blister 
           orientation, and automatic rejection of non-conforming blisters. A target accuracy of approximately 99.99% was 
           established for counting and information extraction. Additionally, the system must accommodate different blister 
@@ -581,7 +584,17 @@
     <h4><u>4.2.3 Evaluation Metrics and Scoring</u></h4>
     <p>The pipelines were assessed using character accuracy, exact-match accuracy, detection coverage and processing time. Predictions and references were normalised to uppercase and non-alphanumeric characters were removed before comparison.</p>
     <p>Character accuracy was calculated using pooled character edit distance:</p>
-    <p style="text-align:center;">Character Accuracy = max(0, 1 − total character edit distance / total number of reference characters) × 100%</p>
+    <br>    
+    <p>
+      \[
+      \text{Character Accuracy} =
+      \max\left(0, 1 -
+      \frac{\text{Total character edit distance}}
+      {\text{Total number of reference characters}}
+      \right) \times 100\%
+      \]
+    </p>
+    <br>
     <p>This measure reflects only partial text recognition, whereas exact-match accuracy is the proportion of target fields for which the complete normalised prediction matches the reference. Exact matching is relevant to batch numbers and expiry dates because one incorrect character may make a value unsuitable for verification. Detection coverage is the proportion of annotated target fields matched to a YOLO detection under the applicable matching criteria. It measures localisation but not whether the text was read correctly.</p>
     <p>For whole-image OCR, annotated target regions were used to assign recognised text to the corresponding batch-number or expiry-date field for scoring. An OCR region was assigned to a target when at least 50% of its area lay within the annotated region (Nayef et al., 2017). All 92 targets remained in the evaluation denominator, including those for which no text was recognised.</p>
     <p>Processing time was measured separately across 30 images containing the 92 targets. The 12 pipeline configurations were evaluated on a CPU, reporting mean and standard deviation in seconds per image. For whole-image OCR, timing only includes OCR on the full image while for YOLO-assisted pipelines, it covers detection, crop rectification and OCR of eligible detected regions. Image loading and one-time model initialisation were excluded. These measurements do not represent the complete time required by an integrated prototype.</p>
@@ -814,14 +827,6 @@
       </div>
     </div>
 
-    <br />
-    <sl-divider></sl-divider>
-    <div> 
-      <div id="section-header-8">
-        <h2>8. Appendix</h2>
-      </div>
-    </div>
-
     <!-- This is an example of how you can use the references component to create references -->
     <div id="references" class="references">
       <sl-divider></sl-divider>
@@ -841,6 +846,203 @@
           38-45. Retrieved from http://ejournalappliedpsyc/index.php/ejap
         </li>
       </ul>
+    </div>
+
+    <br />
+    <sl-divider></sl-divider>
+    <div> 
+      <div id="appendix">
+        <h2>Appendix</h2>
+      </div>
+
+      <div id="appendix-a">
+        <h3>Appendix A: DDS-2 Restocking Process</h3>
+        <p>
+          Figure A.1 and A.2 illustrate the existing DDS-2 restocking process at NUH Pharmacy, while 
+          Video A.1 provides a demonstration of the process
+        </p>
+        <image-component tag="image" source="assets/Process flow 2.png" subtitle="Figure A.1: Summary of the DDS-2 restocking process" width="60%">
+        </image-component>
+        <br><br>
+
+        <image-component tag="image" source="assets/Process flow 1.png" subtitle="Figure A.2: Detailed process flow chart of the DDS-2 restocking process">
+        </image-component>
+        <br><br>
+
+        <div style="text-align: center; margin: 20px auto;">
+          <video controls style="display: block; width: 70%; height: auto; margin: 0 auto;">
+            <source src="components/video/restocking.mp4" type="video/mp4">
+            Your browser does not support video playback.
+          </video>
+          
+          <p style="text-align: center; font-size: 1rem; font-style: italic; margin-top: 8px;">
+            Video A.1: Demonstration of the DDS-2 restocking process at NUH Pharmacy
+          </p>
+        </div>
+      </div>
+
+      <div id="appendix-b">
+        <h3>Appendix B: Stakeholder Meetings and Survey Documentation</h3>
+        <p>
+          This appendix contains a summary of the stakeholder meetings with the stakeholders and along with 
+          the survey questionnaire we used to get the user needs.
+        </p>
+
+        <h3>B.1 </h3>
+
+        <table-component subtitle="Table B.1: Summary of Stakeholder meetings">
+          <div id="Table-B1"></div>
+        </table-component>
+        
+        <h3>B.2 Survey Questionnaire</h3>
+
+        <p><strong>Survey Title:</strong> Technology-enabled medication verification system for drug dispensing machine
+          <br>
+          <strong>Survey Period:</strong> 27 September 2026 – 11 October 2026
+          <br>
+          <strong>Response Rate:</strong> 33% (22 respondents)
+        </p>
+
+        <h3>Survey Introduction</h3>
+        <p>
+          We are a group of NUS students conducting this survey as part of our Final Year Project (FYP).
+          We are exploring ways to develop a prototype that could support pharmacists during the DDS
+          cartridge replenishment process, with the aim to improve workflow efficiency and accuracy.
+        </p>
+
+        <p>
+          This survey is intended to help us better understand the current workflow and identify areas
+          where a prototype could provide useful support. We are not assessing individual performance,
+          and there are no right or wrong answers. We will not collect any personal information, and
+          we will use all responses only for our FYP.
+        </p>
+
+        <h3>Survey Questions</h3>
+
+        <p><strong>Q1. What stage of the restocking process are you mostly involved in?</strong>
+          <em>(Multiple selections allowed)</em></p>
+        <ul>
+          <li>Preparing and restocking medication blisters into the cartridge</li>
+          <li>Registering the cartridge in DDS-2 and keying in the drug information</li>
+          <li>Performing the final verification and restocking the cartridge into DDS-2</li>
+        </ul>
+
+        <p><strong>Q2. Rank the most difficult part of restocking the DDS machine?</strong>
+          <em>(Ranking question)</em></p>
+        <ul>
+          <li>Counting the blisters</li>
+          <li>Keying the information on the machine database</li>
+          <li>Ensuring the correct orientation of the blisters</li>
+          <li>Verifying batch numbers</li>
+        </ul>
+
+        <p><strong>Q3. How many cartridges per week are you responsible for?</strong></p>
+        <ul>
+          <li>Less than 50</li>
+          <li>50 - 100</li>
+          <li>100 - 150</li>
+          <li>150 - 200</li>
+          <li>Greater than 200</li>
+        </ul>
+
+        <p><strong>Q4. How often do you recount the blisters?</strong></p>
+        <ul>
+          <li>Every 1-3 cartridges</li>
+          <li>Every 4-6 cartridges</li>
+          <li>Every 6+ cartridges</li>
+          <li>I do not recount the blisters</li>
+        </ul>
+
+        <p><strong>Q5. Which of these would be useful if we implemented it in our proposed solution?</strong>
+          <em>(Multiple selections allowed)</em></p>
+        <ul>
+          <li>Automatic counting</li>
+          <li>Automatic data entry</li>
+          <li>Automatic verifying of batch numbers</li>
+          <li>Automatic verifying of blisters orientation in the cartridge</li>
+        </ul>
+
+        <p><strong>Q6. What would be your main concern about a proposed solution for tackling the restocking process?</strong></p>
+        <ul>
+          <li>Accuracy</li>
+          <li>Ease of use</li>
+          <li>Speed</li>
+          <li>Implementation feasibility</li>
+          <li>Other: Specify</li>
+        </ul>
+
+        <p><strong>Q7. Do you feel burnout while restocking the machine?</strong></p>
+        <ul>
+          <li>After restocking around 10 cartridges</li>
+          <li>After restocking 10-20 cartridges</li>
+          <li>After restocking 20-30 cartridges</li>
+          <li>After restocking more than 30 cartridges</li>
+          <li>I don't feel burnt out</li>
+        </ul>
+
+        <p><strong>Q8. Do you have anything else you want to let us know?</strong>
+          <em>(Open-ended question)</em>
+        </p>
+
+        <p><em>Questions 1–7 were required. Question 8 was optional</em></p>
+
+        <h3>B.3 Survey Data Analysis Method</h3>
+
+        <p>
+          The difficulty score for Question 2 was calculated
+          using the weighted average rank of each task.
+        </p>
+
+        <p>
+          \[
+          \text{Weighted Average Rank}
+          =
+          \frac{n_1 + 2n_2 + 3n_3 + 4n_4}{N}
+          \]
+        </p>
+
+        <p>
+          \[
+          \text{Difficulty Score}
+          = 4 - \text{Weighted Average Rank}
+          \]
+        </p>
+
+        <p>
+          Where \(n_1, n_2, n_3, n_4\) represent the number of
+          respondents assigning ranks 1, 2, 3 and 4 respectively,
+          and \(N\) is the total number of respondents.
+          A higher difficulty score indicates a task perceived
+          as more difficult.
+        </p>
+      </div>
+
+      <div id="appendix-c">
+        <h3>Appendix C: Project Timeline and Progress</h3>
+        <p>
+          The following Gantt charts illustrate the overall project timeline, activities completed to 
+          date, and planned activities for the next semester.
+        </p>
+        <image-component tag="image" source="assets/Gantt chart 1.png" subtitle="Figure C.1: Overall project timeline">
+        </image-component>
+        <br><br>
+        <image-component tag="image" source="assets/gantt chart 2.png" subtitle="Figure C.2: Gannt chart of completed project activities">
+        </image-component>
+        <br><br>
+        <image-component tag="image" source="assets/gantt chart 3.png" subtitle="Figure C.3: Gannt chart of planned project activities">
+        </image-component>
+      </div>
+
+      <div id="appendix-d">
+        <h3>Appendix D: Team Member Contributions</h3>
+        <p>
+          Table D.1 summarises the responsibilities and contributions of individual team 
+          members throughout the project.
+        </p>
+        <table-component subtitle="Table D.1: Distribution of Team Responsibilities">
+          <div id="Table-D1"></div>
+        </table-component>
+      </div>
     </div>
   </div>
 

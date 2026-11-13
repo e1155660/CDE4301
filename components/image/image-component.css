@@ -1,0 +1,55 @@
+
+/* Indicate that images can be enlarged */
+.zoomable {
+  cursor: zoom-in;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.zoomable:hover {
+  opacity: 0.85;
+  transform: scale(1.01);
+}
+
+/* Full-screen image viewer */
+.image-lightbox {
+  width: 90vw;
+  max-width: 90vw;
+  height: 85vh;
+  max-height: 85vh;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  background: white;
+  box-sizing: border-box;
+  position: fixed;
+}
+
+.image-lightbox::backdrop {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.zoom-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+.image-hint {
+  display: block;
+  font-size: 0.8rem;
+  color: #777;
+  margin-top: 4px;
+}
+
+.zoom-container img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  margin: auto;
+}
