@@ -1,7 +1,7 @@
 
 class ImageComponent extends HTMLElement {
   static get observedAttributes() {
-    return ["tag", "source", "subtitle", "scrollable"];
+    return ["tag", "source", "subtitle", "scrollable", "width"];
   }
 
   constructor() {
@@ -15,6 +15,10 @@ class ImageComponent extends HTMLElement {
 
   attributeChangedCallback(name, _, newValue) {
     this[name] = newValue;
+
+    if (this.isConnected) {
+      this.render();
+    }
   }
 
   render() {
@@ -37,25 +41,38 @@ class ImageComponent extends HTMLElement {
       <sub>${this.subtitle}</sub>
 
       <style>
+
+        /* MAIN COMPONENT SPACING */
         :host {
           display: block;
+          width: 100%;
+          max-width: 100%;
           text-align: center;
+          margin-top: 30px;
+          margin-bottom: 55px;
+          box-sizing: border-box;
         }
 
+        /* NORMAL IMAGE */
         .normal-image {
           width: ${this.getAttribute("width") || "70%"};
-          margin: auto;
+          max-width: 100%;
+          margin: 0 auto;
         }
 
         .normal-image img {
           display: block;
           width: 100%;
           height: auto;
+          object-fit: contain;
+          image-rendering: auto;
         }
 
+        /* SCROLLABLE IMAGE */
         .scrollable-image {
           width: 70%;
-          margin: auto;
+          max-width: 100%;
+          margin: 0 auto;
           overflow-x: auto;
         }
 
@@ -66,7 +83,7 @@ class ImageComponent extends HTMLElement {
           height: auto;
         }
 
-        /* Indicate that images are clickable */
+        /* IMAGE ZOOM */
         .normal-image,
         .scrollable-image {
           position: relative;
@@ -100,14 +117,26 @@ class ImageComponent extends HTMLElement {
           opacity: 1;
         }
 
+        /* FIGURE CAPTION FORMATTING */
         sub {
           display: block;
+          width: 85%;
+          max-width: 100%;
+          margin: 14px auto 0 auto;
+          padding: 0 10px;
+          box-sizing: border-box;
+
           font-size: 1rem;
           font-style: italic;
-          margin-top: 8px;
+          line-height: 1.6;
+          text-align: center;
+
+          white-space: normal;
+          overflow-wrap: anywhere;
+          word-break: normal;
         }
 
-
+        /* IMAGE LIGHTBOX */
         .image-lightbox {
           width: 90vw;
           max-width: 90vw;
@@ -144,6 +173,7 @@ class ImageComponent extends HTMLElement {
           margin: auto;
         }
 
+        /* CLOSE BUTTON */
         .close-button {
           position: absolute;
           top: 12px;
@@ -181,18 +211,38 @@ class ImageComponent extends HTMLElement {
           outline: none;
         }
 
+        /* MOBILE RESPONSIVENESS */
+        @media (max-width: 599px) {
+          .normal-image,
+          .scrollable-image {
+            width: 100%;
+          }
+
+          sub {
+            width: 100%;
+            font-size: 0.9rem;
+            line-height: 1.5;
+          }
+
+          :host {
+            margin-top: 25px;
+            margin-bottom: 40px;
+          }
+        }
+
       </style>
     `;
 
     this.shadowRoot.replaceChildren(div);
+
     const image = this.shadowRoot.querySelector(".zoomable");
     const lightbox = this.shadowRoot.querySelector(".image-lightbox");
     const closeButton = this.shadowRoot.querySelector(".close-button");
-    
+
     image.addEventListener("click", () => {
       lightbox.showModal();
     });
-    
+
     closeButton.addEventListener("click", () => {
       lightbox.close();
     });
