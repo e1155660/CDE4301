@@ -246,6 +246,18 @@
           restocking process.
         </p>
 
+
+        <table-component subtitle="Table 1 (updated report): Tasks repeated in each restocking step.">
+          <table style="width:100%; border-collapse:collapse; text-align:center;" border="1" cellpadding="8">
+            <thead><tr><th>Task</th><th>Step 1</th><th>Step 2</th><th>Step 3</th></tr></thead>
+            <tbody>
+              <tr><td>Counting</td><td>✓</td><td>✓</td><td>✓</td></tr>
+              <tr><td>Inputting information on blister</td><td>✗</td><td>✓</td><td>✗</td></tr>
+              <tr><td>Verifying information on blister with system input</td><td>✗</td><td>✓</td><td>✓</td></tr>
+            </tbody>
+          </table>
+        </table-component>
+
         <table-component subtitle="Table 1: Time taken by staff to reload 1 cartridge. The time is taken from one complete run">
           <div id="Table-1"></div>
         </table-component>
@@ -427,6 +439,7 @@
 
       <div>
         <h4><u>2.3.1 JVM VIXEN EX</u></h4>
+        <image-component tag="image" source="assets/Fig%207%20-%20JVM%20VIXEN%20EX.png" subtitle="Figure 7: JVM VIXEN EX"></image-component>
         <p>
           The JVM VIXEN EX is an automated medication inspection system that uses imaging technology to 
           extract and verify patient and medication information printed on packaged medication pouches. 
@@ -444,6 +457,7 @@
 
       <div>
         <h4><u>2.3.2 Pharmablister Countmaster</u></h4>
+        <image-component tag="image" source="assets/Fig%208%20-%20Pharmablister%20Countmaster.png" subtitle="Figure 8: Pharmablister Countmaster"></image-component>
         <p>
           The Pharmablister Countmaster integrates automated blister counting, visual defect detection, 
           and rejection mechanisms to improve pharmacy efficiency and inventory accuracy. Its combination 
@@ -462,6 +476,7 @@
 
       <div>
         <h4><u>2.3.3 SEA Vision Harle2D</u></h4>
+        <image-component tag="image" source="assets/Fig%209%20-%20SEA%20Vision%20Harle2D.png" subtitle="Figure 9: SEA Vision Harle2D"></image-component>
         <p>
           The SEA Vision Harle2D is an automated pharmaceutical inspection system that utilises Optical 
           Character Recognition (OCR), Optical Character Verification (OCV), and specialised lighting to 
@@ -481,6 +496,7 @@
 
       <div>
         <h4><u>2.3.4 Jornen Desblister Machine DBM80</u></h4>
+        <image-component tag="image" source="assets/Fig%2010%20-%20Jornen%20DBM80.png" subtitle="Figure 10: Jornen Desblister Machine DBM80"></image-component>
         <p>
           The Jornen DBM80 is designed for removing medication from blister packaging. Its adjustable 
           feeding mechanism, bottom-feed singulation, and vertical magazine feeder provide useful 
@@ -586,6 +602,7 @@
 <sl-divider></sl-divider>
 <div>
   <div id="section-header-4"><h2>4. Testing</h2></div>
+  <p>During the interim phase, testing focused on two OptIVS subsystems, including image acquisition and text recognition, and blister presentation. The first assessed whether blister information could be captured and recognised while the second explored how individual blisters could be presented to a camera. The subsystems were tested separately, so the results do not represent the performance of an integrated prototype.</p>
   <div id="sub-section-4-header-1">
     <h3>4.1 Image Acquisition Testing</h3>
     <h4><u>4.1.1 Lighting Assessment</u></h4>
@@ -593,7 +610,7 @@
     <p>Samples included medication types identified in NUH pharmacy error statistics and those obtained from team members' households: Amlodipine 10 mg, Paracil 500 mg, Senna 7.5 mg, Glyprin 100 mg/45 mg, Zenpro 20 mg, Diabetmin 850 mg, Rozuva FC 10 mg, and Uphamol 500 mg (Figure 8).</p>
     <image-component tag="image" source="assets/Fig%208.png" subtitle="Figure 8: Seven blister types with the highest frequency of errors based on statistics provided by NUH pharmacy staff."></image-component>
     <h4><u>4.1.2 Camera Comparison</u></h4>
-    <p>The Raspberry Pi and IDS U3-36L0XC cameras were each positioned at the top of the same enclosure and compared at different working distances. Image clarity was assessed visually, while preliminary recognition experiments were conducted using a pretrained OCR model from Hugging Face. Only the visual comparison is discussed in this report.</p>
+    <p>The Raspberry Pi and IDS U3-36L0XC cameras were each positioned at the top of the same enclosure and compared at different working distances. Image clarity was assessed visually, while preliminary recognition experiments were conducted using a pretrained OCR model from Hugging Face. Only the visual assessment is reported in this subsection to distinguish the preliminary camera comparison from the systematic evaluation of OCR pipelines presented in Section 4.2.</p>
   </div>
   <div id="sub-section-4-header-2">
     <h3>4.2 Text Extraction</h3>
@@ -602,13 +619,13 @@
     <p>The dataset comprised 429 images across eight blister types, divided into 297 training, 87 validation, and 45 test images. A 70:20:10 split was targeted within each brand, with temporally adjacent captures grouped to reduce data leakage. Training incorporated flipping, scaling, and colour augmentation, with a maximum of 65 epochs and early stopping after 15 epochs without improvement.</p>
     <p>The OCR comparison used 30 test images containing 92 annotated text regions (46 batch numbers and 46 expiry dates). All pipelines were evaluated against the same target set. As some images contained multiple targets, these regions were not statistically independent. The test images came from brands represented in the dataset and hence performance on unseen brands remains unknown in this interim.</p>
     <h4><u>4.2.2 OCR and YOLO Configurations</u></h4>
-    <p>PaddleOCR, EasyOCR, and Tesseract were evaluated using whole-image OCR and YOLO-oriented bounding box (YOLO-OBB) localisation, where detected text regions were cropped before recognition. Three YOLO configurations were investigated (Table 2).</p>
+    <p>Each of the three OCR engines, PaddleOCR, EasyOCR, and Tesseract, was evaluated in four pipeline configurations: a whole-image baseline and three configurations using YOLO-oriented bounding box (YOLO-OBB) localisation (Table 2). In the whole-image baseline, OCR was applied directly to the complete blister image. In the YOLO-assisted configurations, detected text regions were cropped and rectified before being passed to the OCR engine. The three YOLO configurations differed in how the annotated regions were classified.</p>
     
     <table-component subtitle="Table 2: OCR and YOLO configurations used in the text-extraction comparison.">
       <div id="Table-2"></div>
     </table-component>
 
-    <p>Both approaches produced text for comparison with reference transcriptions. Whole-image OCR predictions were assigned to annotated target fields, while YOLO-assisted predictions were obtained from detected crops (Figure 9).</p>
+    <p>Both approaches produced text predictions that were compared with reference transcriptions. For whole-image OCR, recognised text was assigned to annotated target fields for scoring. For YOLO-assisted OCR, predictions were obtained from the detected crops and compared with the corresponding target fields (Figure 9).</p>
     <image-component tag="image" source="assets/Fig%209.png" subtitle="Figure 9: Evaluation workflow for (a) whole-image and (b) YOLO-assisted OCR pipelines."></image-component>
     <h4><u>4.2.3 Evaluation Metrics and Scoring</u></h4>
     <p>The pipelines were assessed using character accuracy, exact-match accuracy, detection coverage and processing time. Predictions and references were normalised to uppercase and non-alphanumeric characters were removed before comparison.</p>
@@ -828,6 +845,10 @@
         </p>
 
         <p>
+          More importantly, the text recognition accuracy of the inspection subsystem must approach the target of 99.99%, as the extracted information directly determines the system's subsequent actions. Inaccurate recognition of batch numbers, expiry dates or medication details could result in the incorrect acceptance or rejection of blister strips, compromising the reliability and safety of the overall system. Therefore, further improvements to the camera setup, lighting conditions and OCR model are essential to improve recognition accuracy and minimise verification errors.
+        </p>
+
+        <p>
           Future development will focus on refining the feeding mechanism, improving the camera and lighting arrangement, and 
           improving the efficiency of the conveyor system. Experimental testing will be required to evaluate singulation reliability, 
           packaging safety, verification accuracy and processing time across different blister formats.
@@ -849,9 +870,7 @@
           Through multiple site visits to NUH Pharmacy and a survey conducted with pharmacists, we gained a better understanding 
           of the existing cartridge restocking workflow, its challenges, and potential areas for improvement. Based on our findings, 
           we began developing and testing YOLO combined with different OCR models to automate the verification of medication blister 
-          details. We designed our first prototype to integrate the model into the pharmacy workflow for initial testing. Moving 
-          forward, we aim to further improve model accuracy, refine the prototype based on pharmacist feedback, and deploy it at 
-          NUH Pharmacy in the next semester to evaluate its effectiveness and identify areas for further improvement.
+          details. We designed our prototype OptIVS to integrate the model into the pharmacy workflow for initial testing. Moving forward, we aim to improve model accuracy, refine the prototype based on pharmacist feedback, and deploy it at NUH Pharmacy next semester to evaluate its effectiveness and identify further improvements.
         </p>
       </div>
     </div>
