@@ -32,6 +32,35 @@
   <script src="./components/table-component/table-component.js"></script>
 
   <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+
+  
+<style>
+  /* MathJax formulas */
+  mjx-container[display="true"] {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  @media (max-width: 599px) {
+
+    /* Tables: scroll only on mobile */
+    .gridjs-wrapper {
+      overflow-x: auto !important;
+      max-width: 100%;
+    }
+
+    .gridjs-table {
+      min-width: 650px;
+    }
+
+    /* Equations: smaller on mobile */
+    mjx-container[display="true"] {
+      font-size: 85% !important;
+    }
+  }
+  </style>
+
 </head>
 
 <body>
