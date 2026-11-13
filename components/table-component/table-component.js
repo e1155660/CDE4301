@@ -145,7 +145,7 @@ new gridjs.Grid({
 
     ["Design Development", "Morphological Charts", "Zhao Tian, Preeti"],
     ["", "Design Evaluation and Selection", "All members"],
-    ["", "3D Rendering of Optivis Prototype", "Zhao Tian"],
+    ["", "3D Rendering of OptIVS Prototype", "Zhao Tian"],
     ["", "Prototype Testing", "Zhao Tian"],
 
     ["Documentation", "Interim Report Writing", "All members"],
