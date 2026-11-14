@@ -140,7 +140,18 @@ new gridjs.Grid({
 
     ["YOLO + OCR Development", "Image Acquisition", "All members"],
     ["", "Image Labelling", "Nikitha, Preeti, Jia Shuen"],
-    ["", "Model Training", "All members"],
+    [
+      "",
+      "Model Training",
+      gridjs.html(`
+      <ul>
+        <li>PaddleOCR only: Nikitha</li>
+        <li>PaddleOCR + YOLO: Zhao Tian</li>
+        <li>Tesseract + YOLO: Preeti</li>
+        <li>EasyOCR + YOLO: Jia Shuen</li>
+      </ul>
+      `)
+    ],
     ["", "Model Analysis", "Jia Shuen"],
 
     ["Design Development", "Morphological Charts", "Zhao Tian, Preeti"],
