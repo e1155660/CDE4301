@@ -156,6 +156,47 @@ new gridjs.Grid({
   pagination: false
 }).render(document.getElementById("Table-D1"));
 
+
+new gridjs.Grid({
+  columns: ["Report Section", "Team Members"],
+  data: [
+    [
+      "1. Objective and Context",
+      "Nikitha"
+    ],
+    [
+      gridjs.html(`
+        2. Scope, Problem Statement and Existing Technology<br>
+        5.1 Image Acquisition
+      `),
+      "Preeti"
+    ],
+    [
+      gridjs.html(`
+        3. Design<br>
+        4.1 Image Acquisition Testing<br>
+        4.3 Blister Presentation Concept Evaluation<br>
+        6. Prototype Design and Development<br>
+        7. Conclusion
+      `),
+      "Zhao Tian"
+    ],
+    [
+      gridjs.html(`
+        4.2 Text Extraction<br>
+        5.2 Text Extraction Performance<br>
+        5.3 Blister Presentation Concept Analysis<br>
+        5.4 Limitations and Next Steps
+      `),
+      "Jia Shuen"
+    ]
+  ],
+  sort: false,
+  search: false,
+  pagination: false
+}).render(document.getElementById("Table-D2"));
+
+
 const style = document.createElement("style");
 
 style.textContent = `
@@ -201,6 +242,17 @@ style.textContent = `
   #Table-D1 th.gridjs-th {
     text-align: left !important;
   }
+
+  /* Report writing contributions table */
+  #Table-D2 td.gridjs-td,
+  #Table-D2 th.gridjs-th {
+    text-align: left !important;
+    vertical-align: top;
+  }
+
+#Table-D2 td.gridjs-td:first-child {
+  font-weight: normal;
+}
 `;
 
 document.head.appendChild(style);
